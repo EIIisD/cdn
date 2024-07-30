@@ -32,7 +32,7 @@
   --sat: 0.2;
 
   --link-weight: 650;
-  --link-color: rgb(132, 204, 22);
+  --link-color: rgb(132 204 22);
 }
 
 :is(.dark\:text-primary, .text-primary),
@@ -40,72 +40,81 @@
   color: hsl(var(--brand-foreground)) !important;
 }
 
-.reflect-editor-scope {
-  &,
-  & .reflect-editor {
-    && a[data-editor-tag],
+.ProseMirror,
+.remirror-editor,
+[class*="bg-gray-800\/30"] {
+  background: rgb(0 0 0 / 0) !important;
+}
+
+.ProseMirror.remirror-editor > h1:first-of-type:before {
+  background: var(--link-color) !important;
+}
+
+&,
+& .reflect-editor {
+  && a[data-editor-tag],
         && a[href^="https://reflect.app"],
         && a[href^="https://reflect.site"]
-    {
-      font-size: medium !important;
-      background-color: lch(from var(--link-color) l c h / 0.1) !important;
-    }
-    && a {
-      font-weight: var(--link-weight) !important;
-      color: var(--link-color) !important;
-    }
+  {
+    font-size: medium !important;
+    background-color: lch(from var(--link-color) l c h / 0.1) !important;
+  }
+  && a {
+    font-weight: var(--link-weight) !important;
+    color: var(--link-color) !important;
+  }
+}
+
+& .reflect-editor {
+  max-width: 80ch !important;
+  width: 100%;
+  align-self: center !important;
+
+  &
+    *:is(
+      b,
+      em,
+      strong,
+      .font-medium,
+      .font-semibold,
+      .font-bold,
+      h5,
+      h4,
+      h3,
+      h2,
+      h1
+    ) {
+    font-weight: var(--bold) !important;
   }
 
-  & .reflect-editor {
-    max-width: 72ch !important;
-    width: 100%;
-    align-self: center !important;
+  && * {
+    line-height: normal !important;
+    letter-spacing: normal !important;
+  }
 
-    &
-      *:is(
-        b,
-        em,
-        strong,
-        .font-medium,
-        .font-semibold,
-        .font-bold,
-        h5,
-        h4,
-        h3,
-        h2,
-        h1
-      ) {
-      font-weight: var(--bold) !important;
-    }
+  && h1 {
+    font-size: medium !important;
+    font-weight: var(--bold) !important;
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  && h2 {
+    font-size: large !important;
+  }
+  && h3 {
+    font-size: medium !important;
+  }
+  && h4 {
+    font-size: small !important;
+  }
 
-    && * {
-      line-height: normal !important;
-      letter-spacing: normal !important;
-    }
+  & > * > * + *,
+  & > * > * > * + * {
+    margin-top: 1lh !important;
+    margin-bottom: 0 !important;
+  }
 
-    && h1 {
-      font-size: medium !important;
-      font-weight: var(--bold) !important;
-      color: hsl(var(--muted-foreground)) !important;
-    }
-    && h2 {
-      font-size: large !important;
-    }
-    && h3 {
-      font-size: medium !important;
-    }
-    && h4 {
-      font-size: small !important;
-    }
-
-    & > * > * + *,
-    & > * > * > * + * {
-      margin-top: 1lh !important;
-      margin-bottom: 0 !important;
-    }
-
-    & .remirror-resizable-view {
-      max-width: 66.67% !important;
-    }
+  & .remirror-resizable-view,
+  & img[data-image-settled][resizable="false"] {
+    max-width: 66.67% !important;
   }
 }

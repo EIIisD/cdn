@@ -1,6 +1,5 @@
 (function injectStyle() {
-  const cssUrl =
-    "https://raw.githubusercontent.com/EIIisD/cdn/main/reflectApp.css";
+  const cssUrl = "https://egdn.vercel.app/reflectApp.css";
 
   let link = document.querySelector("link[data-injected-style]");
 
