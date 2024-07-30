@@ -2,12 +2,15 @@
   "name": "cdn",
   "type": "module",
   "scripts": {
-    "build": "git add . && git commit --allow-empty-message -m '' --no-verify && git remote get-url origin > /dev/null 2>&1 && branch=$(git rev-parse --abbrev-ref HEAD) && git push origin $branch && echo 'Built' || true && bun --bun run build"
+    "build": "git add . && git commit --allow-empty-message -m '' --no-verify && git push && vc"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "vercel": "^35.2.1"
   }
 }
