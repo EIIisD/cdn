@@ -1,0 +1,111 @@
+* {
+  --font-inter: system-ui !important;
+}
+
+:root .dark,
+:root.dark {
+  --brand: var(--hue) calc(75% * var(--sat)) 59% !important;
+  --brand-foreground: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --background: calc(var(--hue) - 19) calc(49% * var(--sat)) 8% !important;
+  --background-stark: calc(var(--hue) - 19) calc(49% * var(--sat)) 8% !important;
+  --foreground: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --muted: calc(var(--hue) - 26) calc(19% * var(--sat)) 27% !important;
+  --muted-foreground: calc(var(--hue) - 28) calc(14% * var(--sat)) 47.4% !important;
+  --popover: calc(var(--hue) - 28) calc(28% * var(--sat)) 17% !important;
+  --popover-foreground: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --card: calc(var(--hue) - 20.8) calc(84% * var(--sat)) 4.9% !important;
+  --card-foreground: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --border: calc(var(--hue) - 26) calc(19% * var(--sat)) 27% !important;
+  --input: calc(var(--hue) - 26) calc(19% * var(--sat)) 27% !important;
+  --primary: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --primary-foreground: calc(var(--hue) - 20.8) calc(47.4% * var(--sat)) 11.2% !important;
+  --secondary: calc(var(--hue) - 25.8) calc(32.6% * var(--sat)) 17.5% !important;
+  --secondary-foreground: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --accent: calc(var(--hue) - 26) calc(19% * var(--sat)) 27% !important;
+  --accent-foreground: calc(var(--hue) - 33) calc(40% * var(--sat)) 98% !important;
+  --destructive: 0 calc(62.8% * var(--sat)) 30.6% !important;
+  --destructive-foreground: 0 calc(85.7% * var(--sat)) 97.3% !important;
+  --ring: var(--hue) calc(75% * var(--sat)) 59% !important;
+
+  --bold: 550;
+  --hue: 243;
+  --sat: 0.2;
+
+  --link-weight: 650;
+  --link-color: rgb(132, 204, 22);
+}
+
+:is(.dark\:text-primary, .text-primary),
+:is(.dark\:text-primary-dk, .text-primary-dk) {
+  color: hsl(var(--brand-foreground)) !important;
+}
+
+.reflect-editor-scope {
+  &,
+  & .reflect-editor {
+    && a[data-editor-tag],
+        && a[href^="https://reflect.app"],
+        && a[href^="https://reflect.site"]
+    {
+      font-size: medium !important;
+      background-color: lch(from var(--link-color) l c h / 0.1) !important;
+    }
+    && a {
+      font-weight: var(--link-weight) !important;
+      color: var(--link-color) !important;
+    }
+  }
+
+  & .reflect-editor {
+    max-width: 72ch !important;
+    width: 100%;
+    align-self: center !important;
+
+    &
+      *:is(
+        b,
+        em,
+        strong,
+        .font-medium,
+        .font-semibold,
+        .font-bold,
+        h5,
+        h4,
+        h3,
+        h2,
+        h1
+      ) {
+      font-weight: var(--bold) !important;
+    }
+
+    && * {
+      line-height: normal !important;
+      letter-spacing: normal !important;
+    }
+
+    && h1 {
+      font-size: medium !important;
+      font-weight: var(--bold) !important;
+      color: hsl(var(--muted-foreground)) !important;
+    }
+    && h2 {
+      font-size: large !important;
+    }
+    && h3 {
+      font-size: medium !important;
+    }
+    && h4 {
+      font-size: small !important;
+    }
+
+    & > * > * + *,
+    & > * > * > * + * {
+      margin-top: 1lh !important;
+      margin-bottom: 0 !important;
+    }
+
+    & .remirror-resizable-view {
+      max-width: 66.67% !important;
+    }
+  }
+}
