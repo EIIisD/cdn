@@ -1,15 +1,17 @@
 (function injectStyle() {
-  const css =
-    "@import url('https://raw.githubusercontent.com/EIIisD/cdn/main/reflectApp.css');";
+  const cssUrl =
+    "https://raw.githubusercontent.com/EIIisD/cdn/main/reflectApp.css";
 
-  let style = document.querySelector("style[data-injected-style]");
+  let link = document.querySelector("link[data-injected-style]");
 
-  if (style) {
-    style.textContent = css;
+  if (link) {
+    link.href = cssUrl;
   } else {
-    style = document.createElement("style");
-    style.setAttribute("data-injected-style", "");
-    style.textContent = css;
-    document.head.appendChild(style);
+    link = document.createElement("link");
+    link.setAttribute("data-injected-style", "");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = cssUrl;
+    document.head.appendChild(link);
   }
 })();
